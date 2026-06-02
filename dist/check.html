@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en-BB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Check what benefits you can claim - National Insurance | Government of Barbados</title>
+  <meta name="description" content="Answer a few questions to find out which National Insurance benefits you may be able to claim.">
+  <link rel="icon" href="./assets/images/favicon.ico">
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    body { margin: 0; font-family: var(--font-family-base); color: var(--color-text); background: var(--color-background); }
+    .app-prose { max-width: 44rem; }
+    main { padding-block: var(--spacing-s) var(--spacing-l); }
+    .app-progress { color: var(--color-text-muted); margin: 0 0 var(--spacing-s); }
+    .app-step { margin: 0; padding: 0; border: 0; }
+    .app-options { display: flex; flex-direction: column; gap: var(--spacing-s); margin-top: var(--spacing-s); }
+    .app-actions { margin-top: var(--spacing-m); }
+    .app-result { padding-top: var(--spacing-m); margin-top: var(--spacing-m); border-top: 2px solid var(--color-grey-00); }
+    .app-result h3 { margin: 0 0 var(--spacing-xs); }
+    .app-result p, .app-result ul { margin: var(--spacing-xs) 0; }
+    .app-meta { display: flex; flex-wrap: wrap; gap: var(--spacing-xs); margin: var(--spacing-xs) 0; }
+    .app-tag { display: inline-block; padding: 2px var(--spacing-xs); border-radius: var(--radius-sm); background: var(--color-green-10); font-size: var(--font-size-caption); }
+    .app-note { padding: var(--spacing-s) var(--spacing-xm); border-left: 8px solid var(--color-yellow-00); background: var(--color-yellow-40); margin: var(--spacing-s) 0; }
+    .app-next { padding: var(--spacing-s) var(--spacing-xm); border-left: 8px solid var(--color-teal-00); background: var(--color-teal-10); margin: var(--spacing-m) 0; }
+    .app-next h2 { margin: 0 0 var(--spacing-xs); }
+    .app-none { padding: var(--spacing-s) var(--spacing-xm); border-left: 8px solid var(--color-teal-00); background: var(--color-teal-10); }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <div class="govbb-page">
+    <header>
+      <div class="govbb-official-banner">
+        <div class="govbb-container govbb-official-banner__inner">
+          <span class="govbb-official-banner__crest"><img class="govbb-official-banner__icon" src="./assets/images/govbb-creast.svg" alt=""></span>
+          <span class="govbb-official-banner__text"><span>An official website of the Government of Barbados.</span></span>
+        </div>
+      </div>
+      <div class="govbb-header">
+        <div class="govbb-container govbb-header__inner">
+          <a href="./index.html" aria-label="National Insurance and Social Security Service home">
+            <img class="govbb-header__logo" src="./assets/images/govbb-logo.svg" alt="Government of Barbados">
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <div class="govbb-page__body govbb-page__body--main-only">
+      <main id="main-content" class="govbb-container">
+        <div class="app-prose">
+
+          <noscript>
+            <div class="govbb-status-banner govbb-status-banner--service govbb-status-banner--rounded" style="padding:var(--spacing-s) var(--spacing-xm)">
+              <p class="govbb-text-body"><strong>This check needs JavaScript to work.</strong></p>
+              <p class="govbb-text-body">You can still read the <a class="govbb-link" href="./benefits.html">full list of National Insurance benefits</a> and find out who can claim each one.</p>
+            </div>
+          </noscript>
+
+          <!-- Error summary -->
+          <div class="govbb-error-summary" id="error-summary" role="alert" tabindex="-1" hidden>
+            <h2 class="govbb-error-summary__title">There is a problem</h2>
+            <ul class="govbb-error-summary__list" id="error-summary-list"></ul>
+          </div>
+
+          <p class="app-progress govbb-text-caption" id="progress" hidden></p>
+
+          <form id="check-form" action="./benefits.html" method="get" novalidate>
+
+            <!-- Step 1: situation -->
+            <fieldset class="app-step govbb-fieldset" data-step="0">
+              <legend class="govbb-fieldset__legend">
+                <h1 class="govbb-text-h2" id="q-situation">What is happening in your life right now?</h1>
+              </legend>
+              <p class="govbb-hint" id="hint-situation">Select all that apply.</p>
+              <p class="govbb-error-message" id="err-situation" hidden></p>
+              <div class="app-options">
+                <div class="govbb-checkbox-item">
+                  <input class="govbb-checkbox" type="checkbox" name="situation" value="sick" id="s-sick">
+                  <label class="govbb-checkbox-item__label" for="s-sick">I am too ill or injured to work</label>
+                </div>
+                <div class="govbb-checkbox-item">
+                  <input class="govbb-checkbox" type="checkbox" name="situation" value="baby" id="s-baby">
+                  <label class="govbb-checkbox-item__label" for="s-baby">I am pregnant, or had a baby in the last 6 months</label>
+                </div>
+                <div class="govbb-checkbox-item">
+                  <input class="govbb-checkbox" type="checkbox" name="situation" value="partner-baby" id="s-partner">
+                  <label class="govbb-checkbox-item__label" for="s-partner">My partner had a baby in the last 6 months</label>
+                </div>
+                <div class="govbb-checkbox-item">
+                  <input class="govbb-checkbox" type="checkbox" name="situation" value="job-loss" id="s-job">
+                  <label class="govbb-checkbox-item__label" for="s-job">I have lost my job, or my hours were cut</label>
+                </div>
+                <div class="govbb-checkbox-item">
+                  <input class="govbb-checkbox" type="checkbox" name="situation" value="work-injury" id="s-injury">
+                  <label class="govbb-checkbox-item__label" for="s-injury">I was injured or made ill because of my work</label>
+                </div>
+                <div class="govbb-checkbox-item">
+                  <input class="govbb-checkbox" type="checkbox" name="situation" value="disability" id="s-disab">
+                  <label class="govbb-checkbox-item__label" for="s-disab">I have a long-term disability or serious illness</label>
+                </div>
+                <div class="govbb-checkbox-item">
+                  <input class="govbb-checkbox" type="checkbox" name="situation" value="bereaved" id="s-bereaved">
+                  <label class="govbb-checkbox-item__label" for="s-bereaved">My husband, wife or a parent has died</label>
+                </div>
+                <div class="govbb-checkbox-item">
+                  <input class="govbb-checkbox" type="checkbox" name="situation" value="retiring" id="s-retire">
+                  <label class="govbb-checkbox-item__label" for="s-retire">I am 61 or older, or planning to retire</label>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Step 2: employment -->
+            <fieldset class="app-step govbb-fieldset" data-step="1" hidden>
+              <legend class="govbb-fieldset__legend">
+                <h1 class="govbb-text-h2" id="q-employment">Are you working at the moment?</h1>
+              </legend>
+              <p class="govbb-hint" id="hint-employment">This helps us tell you how your contributions affect what you can claim.</p>
+              <p class="govbb-error-message" id="err-employment" hidden></p>
+              <div class="app-options">
+                <div class="govbb-radio-item">
+                  <input class="govbb-radio" type="radio" name="employment" value="employed" id="e-employed">
+                  <label class="govbb-radio-item__label" for="e-employed">Yes, I am employed</label>
+                </div>
+                <div class="govbb-radio-item">
+                  <input class="govbb-radio" type="radio" name="employment" value="self-employed" id="e-self">
+                  <label class="govbb-radio-item__label" for="e-self">Yes, I am self-employed</label>
+                </div>
+                <div class="govbb-radio-item">
+                  <input class="govbb-radio" type="radio" name="employment" value="not-working" id="e-none">
+                  <label class="govbb-radio-item__label" for="e-none">No, I am not working</label>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Step 3: contributions -->
+            <fieldset class="app-step govbb-fieldset" data-step="2" hidden>
+              <legend class="govbb-fieldset__legend">
+                <h1 class="govbb-text-h2" id="q-contrib">Have you paid National Insurance for at least 26 weeks (about 6 months)?</h1>
+              </legend>
+              <p class="govbb-hint" id="hint-contrib">This includes contributions paid by you or by an employer on your behalf. If you are not sure, choose &lsquo;I am not sure&rsquo;.</p>
+              <p class="govbb-error-message" id="err-contributions" hidden></p>
+              <div class="app-options">
+                <div class="govbb-radio-item">
+                  <input class="govbb-radio" type="radio" name="contributions" value="yes" id="c-yes">
+                  <label class="govbb-radio-item__label" for="c-yes">Yes</label>
+                </div>
+                <div class="govbb-radio-item">
+                  <input class="govbb-radio" type="radio" name="contributions" value="no" id="c-no">
+                  <label class="govbb-radio-item__label" for="c-no">No</label>
+                </div>
+                <div class="govbb-radio-item">
+                  <input class="govbb-radio" type="radio" name="contributions" value="not-sure" id="c-unsure">
+                  <label class="govbb-radio-item__label" for="c-unsure">I am not sure</label>
+                </div>
+              </div>
+            </fieldset>
+
+            <div class="govbb-btn-group app-actions">
+              <button type="button" class="govbb-btn--secondary" id="prev-btn" hidden>Previous</button>
+              <button type="submit" class="govbb-btn" id="continue-btn">Continue</button>
+            </div>
+          </form>
+
+          <!-- Results (rendered by JS) -->
+          <section id="results" hidden>
+            <h1 class="govbb-text-h2" id="results-heading" tabindex="-1">Benefits you may be able to claim</h1>
+            <p class="govbb-text-body">Based on your answers, you may be able to claim the benefits below. This is guidance only &mdash; the National Insurance and Social Security Service (NISSS) decides every claim.</p>
+            <div id="results-list"></div>
+
+            <div class="app-next">
+              <h2 class="govbb-text-h3">What happens next</h2>
+              <p class="govbb-text-body">This check does not start a claim. To apply for any of these benefits:</p>
+              <ol class="govbb-list govbb-list--number govbb-text-body">
+                <li>Gather the documents listed for each benefit.</li>
+                <li>Contact the NISSS to confirm you qualify and to get the right claim form.</li>
+                <li>Submit your claim to the NISSS. They will tell you their decision.</li>
+              </ol>
+              <p class="govbb-text-body">Visit the <a class="govbb-link" href="https://www.nis.gov.bb/" rel="noreferrer noopener">NISSS website</a> for office locations and contact details.</p>
+            </div>
+
+            <div class="govbb-btn-group app-actions">
+              <a href="./benefits.html" class="govbb-btn">See all benefits in detail</a>
+              <button type="button" class="govbb-btn--secondary" id="restart-btn">Start again</button>
+            </div>
+          </section>
+
+        </div>
+      </main>
+    </div>
+
+    <footer class="govbb-footer">
+      <div class="govbb-container govbb-footer__inner">
+        <nav class="govbb-footer__nav" aria-label="Footer">
+          <a class="govbb-footer__link" href="./benefits.html">All benefits</a>
+          <a class="govbb-footer__link" href="./check.html">Check what you can claim</a>
+          <a class="govbb-footer__link" href="https://www.nis.gov.bb/" rel="noreferrer noopener">NISSS website</a>
+        </nav>
+        <hr class="govbb-footer__divider">
+        <div class="govbb-footer__end">
+          <img class="govbb-footer__coat" src="./assets/images/govbb-creast.svg" alt="Barbados coat of arms">
+          <p class="govbb-footer__copy">&copy; Government of Barbados</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+  (function () {
+    "use strict";
+
+    var SHORT_TERM = { sickness: true, maternity: true, paternity: true, unemployment: true };
+
+    var BENEFITS = {
+      sickness: {
+        title: "Sickness Benefit",
+        summary: "A weekly payment while you cannot work because you are ill or injured.",
+        rate: "66.67% of average insurable earnings",
+        contributory: true,
+        qualify: ["You are an employed or registered self-employed contributor.", "A doctor certifies that you are unfit for work."],
+        docs: "A medical certificate, your National Registration card and your bank details."
+      },
+      maternity: {
+        title: "Maternity Benefit and Grant",
+        summary: "Support around the birth of your child.",
+        rate: "100% of earnings for 14 weeks (single birth) or 17 weeks (multiple birth)",
+        contributory: true,
+        qualify: ["You are over 16 and under pensionable age.", "You have been insured for at least 26 weeks with at least 16 contributions in the relevant quarters.", "If you do not meet these conditions you may get a one-off Maternity Grant instead."],
+        docs: "A medical certificate with the expected or actual birth date, your National Registration card and your bank details."
+      },
+      paternity: {
+        title: "Paternity Benefit",
+        summary: "Time off work after your child is born.",
+        rate: "100% of earnings for up to 3 weeks",
+        contributory: true,
+        qualify: ["You meet the same contribution conditions as Maternity Benefit.", "You claim within 6 months of the birth."],
+        docs: "The child's birth certificate, your National Registration card and your bank details."
+      },
+      unemployment: {
+        title: "Unemployment Benefit",
+        summary: "A weekly payment if you lose your job or your hours are cut.",
+        rate: "60% of average insurable earnings",
+        contributory: true,
+        qualify: ["You lost your job through no fault of your own, or your earnings fell by more than half.", "You have paid enough contributions."],
+        docs: "A letter from your employer, your National Registration card and your bank details."
+      },
+      injury: {
+        title: "Employment Injury Benefit",
+        summary: "A payment if you cannot work because of an accident or illness caused by your job.",
+        rate: "90% of average insurable earnings, up to 52 weeks",
+        contributory: false,
+        qualify: ["You were an employed contributor.", "The injury or illness arose out of your work.", "No minimum contributions are needed.", "Related medical and travelling expenses may also be paid."],
+        docs: "A medical certificate, your employer's accident report and your National Registration card."
+      },
+      disablement: {
+        title: "Disablement Benefit",
+        summary: "A payment for lasting loss of ability after a work injury.",
+        rate: "1-29% disablement: one-off grant. 30% or more: weekly pension",
+        contributory: false,
+        qualify: ["An employment injury has been established.", "A medical board assesses your disablement at 1% or more."],
+        docs: "Medical assessment reports and your National Registration card."
+      },
+      invalidity: {
+        title: "Invalidity Benefit and Grant",
+        summary: "Support if you are permanently unable to work because of illness or disability not caused by your job.",
+        rate: "Benefit needs 150+ contributions. Grant (one-off) needs 50+",
+        contributory: true,
+        qualify: ["You are under pensionable age and permanently incapable of work.", "You have paid at least 150 contributions for the benefit, or 50 for the grant."],
+        docs: "A medical report confirming permanent incapacity, your National Registration card and your bank details."
+      },
+      pension: {
+        title: "Old Age Contributory Pension",
+        summary: "A pension based on the contributions you paid over your working life.",
+        rate: "Pensionable age 67, early pension from 61. Needs at least 500 contributions",
+        contributory: true,
+        qualify: ["You have reached pensionable age (early pension from 61).", "You have paid at least 500 contributions."],
+        docs: "Your National Registration card, proof of date of birth and your bank details."
+      },
+      nonContributory: {
+        title: "Non-Contributory Benefit",
+        summary: "A weekly payment for people living with certain conditions, even without contributions.",
+        rate: "BB$230 per week (18 and over). BB$115 per week (under 18)",
+        contributory: false,
+        qualify: ["You are living with a qualifying condition such as Down Syndrome, advanced Multiple Sclerosis, Cerebral Palsy, Autism, blindness, deafness, or being unable to speak."],
+        docs: "A medical report confirming the condition, your National Registration card and your bank details."
+      },
+      survivors: {
+        title: "Survivors' Benefit",
+        summary: "A payment to the widow, widower or children of an insured person who has died.",
+        rate: "Widow/widower: 33.3% to 50% of the pension, depending on age and length of marriage",
+        contributory: false,
+        qualify: ["You were married to the insured person for at least 3 years, or are their child.", "Children receive 16.6% each up to age 16 (or 25 if in full-time education)."],
+        docs: "The death certificate, marriage and birth certificates as relevant, and your bank details."
+      },
+      funeral: {
+        title: "Funeral Grant",
+        summary: "A one-off payment to help with funeral costs.",
+        rate: "BB$2,220.00",
+        contributory: false,
+        qualify: ["You paid for the funeral of an insured person, or of their spouse or child."],
+        docs: "The death certificate, the funeral receipt or invoice, and your National Registration card."
+      }
+    };
+
+    var SITUATION_MAP = {
+      "sick": ["sickness"],
+      "baby": ["maternity"],
+      "partner-baby": ["paternity"],
+      "job-loss": ["unemployment"],
+      "work-injury": ["injury", "disablement"],
+      "disability": ["invalidity", "nonContributory"],
+      "bereaved": ["survivors", "funeral"],
+      "retiring": ["pension"]
+    };
+
+    var STEPS = [
+      { name: "situation", legendId: "q-situation", errorId: "err-situation", error: "Select at least one thing that applies to you" },
+      { name: "employment", legendId: "q-employment", errorId: "err-employment", error: "Select whether you are working at the moment" },
+      { name: "contributions", legendId: "q-contrib", errorId: "err-contributions", error: "Select whether you have paid National Insurance for at least 26 weeks" }
+    ];
+
+    var form = document.getElementById("check-form");
+    var steps = Array.prototype.slice.call(document.querySelectorAll(".app-step"));
+    var continueBtn = document.getElementById("continue-btn");
+    var prevBtn = document.getElementById("prev-btn");
+    var progress = document.getElementById("progress");
+    var errorSummary = document.getElementById("error-summary");
+    var errorList = document.getElementById("error-summary-list");
+    var results = document.getElementById("results");
+    var resultsList = document.getElementById("results-list");
+    var resultsHeading = document.getElementById("results-heading");
+    var restartBtn = document.getElementById("restart-btn");
+
+    var current = 0;
+
+    function showStep(index) {
+      steps.forEach(function (s, i) { s.hidden = i !== index; });
+      current = index;
+      progress.hidden = false;
+      progress.textContent = "Step " + (index + 1) + " of " + STEPS.length;
+      prevBtn.hidden = index === 0;
+      hideError();
+      var heading = document.getElementById(STEPS[index].legendId);
+      if (heading && heading.focus) heading.setAttribute("tabindex", "-1"), heading.focus();
+      window.scrollTo(0, 0);
+    }
+
+    function selectedValues(name) {
+      var nodes = form.elements[name];
+      if (!nodes) return [];
+      if (!nodes.length) nodes = [nodes];
+      return Array.prototype.slice.call(nodes)
+        .filter(function (el) { return el.checked; })
+        .map(function (el) { return el.value; });
+    }
+
+    function hideError() {
+      errorSummary.hidden = true;
+      errorList.innerHTML = "";
+      STEPS.forEach(function (s) {
+        var msg = document.getElementById(s.errorId);
+        if (msg) { msg.hidden = true; msg.textContent = ""; }
+      });
+      steps[current].querySelectorAll("[aria-invalid]").forEach(function (el) { el.removeAttribute("aria-invalid"); });
+    }
+
+    function showError(step) {
+      var firstInput = steps[current].querySelector("input");
+      steps[current].querySelectorAll("input").forEach(function (el) { el.setAttribute("aria-invalid", "true"); });
+
+      var inlineMsg = document.getElementById(step.errorId);
+      inlineMsg.textContent = "Error: " + step.error;
+      inlineMsg.hidden = false;
+
+      errorList.innerHTML = "";
+      var li = document.createElement("li");
+      var a = document.createElement("a");
+      a.className = "govbb-error-summary__link";
+      a.href = "#" + firstInput.id;
+      a.textContent = step.error;
+      a.addEventListener("click", function (ev) {
+        ev.preventDefault();
+        var t = document.getElementById(firstInput.id);
+        if (t) t.focus();
+      });
+      li.appendChild(a);
+      errorList.appendChild(li);
+      errorSummary.hidden = false;
+      errorSummary.focus();
+    }
+
+    function validateStep() {
+      var step = STEPS[current];
+      if (selectedValues(step.name).length === 0) {
+        showError(step);
+        return false;
+      }
+      return true;
+    }
+
+    function makeNote(text) {
+      var note = document.createElement("div");
+      note.className = "app-note";
+      note.innerHTML = '<p class="govbb-text-body">' + text + "</p>";
+      return note;
+    }
+
+    function buildResults() {
+      var situations = selectedValues("situation");
+      var employment = selectedValues("employment")[0] || "";
+      var contributions = selectedValues("contributions")[0] || "yes";
+      var seen = {};
+      var matched = [];
+      situations.forEach(function (sit) {
+        (SITUATION_MAP[sit] || []).forEach(function (key) {
+          if (!seen[key]) { seen[key] = true; matched.push(key); }
+        });
+      });
+
+      resultsList.innerHTML = "";
+
+      if (matched.length === 0) {
+        var none = document.createElement("div");
+        none.className = "app-none";
+        none.innerHTML = '<p class="govbb-text-body">Based on your answers we could not match a specific benefit. You can still <a class="govbb-link" href="./benefits.html">read about all National Insurance benefits</a> or contact the NISSS for advice.</p>';
+        resultsList.appendChild(none);
+        return;
+      }
+
+      matched.forEach(function (key) {
+        var b = BENEFITS[key];
+        var section = document.createElement("section");
+        section.className = "app-result";
+
+        var h = document.createElement("h3");
+        h.className = "govbb-text-h3";
+        h.textContent = b.title;
+        section.appendChild(h);
+
+        var sum = document.createElement("p");
+        sum.className = "govbb-text-body";
+        sum.textContent = b.summary;
+        section.appendChild(sum);
+
+        var meta = document.createElement("div");
+        meta.className = "app-meta";
+        var tag = document.createElement("span");
+        tag.className = "app-tag";
+        tag.textContent = b.rate;
+        meta.appendChild(tag);
+        section.appendChild(meta);
+
+        if (b.contributory && contributions !== "yes") {
+          section.appendChild(makeNote(contributions === "no"
+            ? "This benefit depends on your contributions. You told us you have not paid National Insurance for at least 26 weeks, so you may not qualify yet &mdash; but it is worth checking your record with the NISSS."
+            : "This benefit depends on your contributions. Check your contribution record with the NISSS to confirm whether you qualify."));
+        }
+
+        if (employment === "self-employed" && SHORT_TERM[key]) {
+          section.appendChild(makeNote("As a self-employed contributor, you can only get this short-term benefit if you are registered for &lsquo;Self Flex&rsquo; and pay at least BB$1,200 a year (in place since 2024)."));
+        }
+
+        var details = document.createElement("details");
+        details.className = "govbb-show-hide";
+        var summaryEl = document.createElement("summary");
+        summaryEl.className = "govbb-show-hide__summary";
+        summaryEl.textContent = "Who can claim and what you need";
+        details.appendChild(summaryEl);
+
+        var content = document.createElement("div");
+        content.className = "govbb-show-hide__content";
+        var ul = document.createElement("ul");
+        ul.className = "govbb-list govbb-list--bullet govbb-text-body";
+        b.qualify.forEach(function (q) {
+          var li = document.createElement("li");
+          li.textContent = q;
+          ul.appendChild(li);
+        });
+        content.appendChild(ul);
+        var docs = document.createElement("p");
+        docs.className = "govbb-text-body";
+        docs.innerHTML = "<strong>What you need to apply:</strong> " + b.docs;
+        content.appendChild(docs);
+        details.appendChild(content);
+        section.appendChild(details);
+
+        resultsList.appendChild(section);
+      });
+    }
+
+    function showResults() {
+      form.hidden = true;
+      progress.hidden = true;
+      buildResults();
+      results.hidden = false;
+      document.title = "Your results - Check what benefits you can claim";
+      resultsHeading.focus();
+      window.scrollTo(0, 0);
+    }
+
+    form.addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      if (!validateStep()) return;
+      if (current < STEPS.length - 1) {
+        showStep(current + 1);
+      } else {
+        showResults();
+      }
+    });
+
+    prevBtn.addEventListener("click", function () {
+      if (current > 0) showStep(current - 1);
+    });
+
+    restartBtn.addEventListener("click", function () {
+      form.reset();
+      form.hidden = false;
+      results.hidden = true;
+      document.title = "Check what benefits you can claim - National Insurance | Government of Barbados";
+      showStep(0);
+    });
+
+    showStep(0);
+  })();
+  </script>
+</body>
+</html>
