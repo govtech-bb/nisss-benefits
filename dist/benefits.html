@@ -20,9 +20,13 @@
     .app-tag { display: inline-block; padding: 2px var(--spacing-xs); border-radius: var(--radius-sm); background: var(--color-yellow-40); font-size: var(--font-size-caption); }
     .app-tag--rate { background: var(--color-green-10); }
     .app-back { display: inline-block; margin-top: var(--spacing-m); }
+    .app-source { margin-top: var(--spacing-l); padding-top: var(--spacing-s); border-top: 1px solid var(--color-grey-00); color: var(--color-text-muted); }
+    .app-skip-link { position: absolute; left: -9999px; top: 0; z-index: 100; padding: var(--spacing-xs) var(--spacing-s); background: var(--color-text); color: #fff; }
+    .app-skip-link:focus { left: 0; }
   </style>
 </head>
 <body>
+  <a href="#main-content" class="app-skip-link">Skip to main content</a>
   <div class="govbb-page">
     <header>
       <div class="govbb-official-banner">
@@ -42,7 +46,8 @@
 
     <nav class="govbb-container govbb-breadcrumbs govbb-breadcrumbs--collapse-on-mobile" aria-label="Breadcrumb" style="margin-top:var(--spacing-s)">
       <ol class="govbb-breadcrumbs__list">
-        <li class="govbb-breadcrumbs__item"><a class="govbb-breadcrumbs__link" href="./index.html">Home</a></li>
+        <li class="govbb-breadcrumbs__item"><a class="govbb-breadcrumbs__link" href="https://alpha.gov.bb/" rel="noreferrer noopener">Home</a></li>
+        <li class="govbb-breadcrumbs__item"><a class="govbb-breadcrumbs__link" href="./index.html">Check what benefits you can claim</a></li>
         <li class="govbb-breadcrumbs__item"><a class="govbb-breadcrumbs__link" href="./benefits.html" aria-current="page">All benefits</a></li>
       </ol>
     </nav>
@@ -51,7 +56,9 @@
       <main id="main-content" class="govbb-container">
         <div class="app-prose">
           <h1 class="govbb-text-h1">All National Insurance benefits</h1>
+          <p class="govbb-text-caption" style="color:var(--color-text-muted)">Last updated on 1st June 2026</p>
           <p class="govbb-text-body-lg">Every benefit paid by the National Insurance and Social Security Service (NISSS), with rates, who can claim and what you need to apply. Not sure where to start? <a class="govbb-link" href="./check.html">Check what you can claim</a>.</p>
+          <p class="govbb-text-body">Where a rate is shown as a percentage, it is a percentage of your <strong>average insurable earnings</strong> &mdash; the average pay your National Insurance contributions are based on.</p>
 
           <div class="app-toc" role="navigation" aria-label="Benefits on this page">
             <p class="govbb-text-body"><strong>On this page</strong></p>
@@ -180,8 +187,8 @@
             <h2 class="govbb-text-h3">Non-Contributory Benefit</h2>
             <p class="govbb-text-body">A weekly payment for people living with certain conditions, even if they have not paid National Insurance contributions.</p>
             <div class="app-meta">
-              <span class="app-tag app-tag--rate">BB$230 per week (18 and over)</span>
-              <span class="app-tag app-tag--rate">BB$115 per week (under 18)</span>
+              <span class="app-tag app-tag--rate">BB$230.00 per week (18 and over)</span>
+              <span class="app-tag app-tag--rate">BB$115.00 per week (under 18)</span>
             </div>
             <p class="govbb-text-body"><strong>You may qualify if you are living with one of:</strong></p>
             <ul class="govbb-list govbb-list--bullet govbb-text-body">
@@ -221,6 +228,8 @@
           </section>
 
           <a href="./check.html" class="govbb-btn app-back" role="button">Check what you can claim</a>
+
+          <p class="app-source govbb-text-caption">Source: National Insurance and Social Security Service (NISSS), <cite>Registration, Benefits and Claims Overview</cite> (April 2026).</p>
         </div>
       </main>
     </div>
@@ -230,6 +239,7 @@
         <nav class="govbb-footer__nav" aria-label="Footer">
           <a class="govbb-footer__link" href="./benefits.html">All benefits</a>
           <a class="govbb-footer__link" href="./check.html">Check what you can claim</a>
+          <a class="govbb-footer__link" href="./accessibility.html">Accessibility statement</a>
           <a class="govbb-footer__link" href="https://www.nis.gov.bb/" rel="noreferrer noopener">NISSS website</a>
         </nav>
         <hr class="govbb-footer__divider">
