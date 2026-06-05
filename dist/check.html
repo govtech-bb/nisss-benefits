@@ -156,7 +156,7 @@
             </fieldset>
 
             <div class="govbb-btn-group app-actions">
-              <button type="button" class="govbb-btn--secondary" id="prev-btn" hidden>Previous</button>
+              <button type="button" class="govbb-btn--secondary" id="prev-btn">Previous</button>
               <button type="submit" class="govbb-btn" id="continue-btn">Continue</button>
             </div>
           </form>
@@ -337,7 +337,7 @@
       current = index;
       progress.hidden = false;
       progress.textContent = "Step " + (index + 1) + " of " + STEPS.length;
-      prevBtn.hidden = index === 0;
+      prevBtn.hidden = false;
       hideError();
       var heading = document.getElementById(STEPS[index].legendId);
       if (heading && heading.focus) heading.setAttribute("tabindex", "-1"), heading.focus();
@@ -508,7 +508,11 @@
     });
 
     prevBtn.addEventListener("click", function () {
-      if (current > 0) showStep(current - 1);
+      if (current > 0) {
+        showStep(current - 1);
+      } else {
+        window.location.href = "./index.html";
+      }
     });
 
     restartBtn.addEventListener("click", function () {
